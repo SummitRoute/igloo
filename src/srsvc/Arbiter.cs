@@ -147,6 +147,7 @@ namespace srsvc
             {
                 filePath = CleanPath(filePath);
                 Log.Info("Deciding on process: {0}", filePath);
+                SRSvc.appLog.WriteEntry(String.Format("Process execution attempt by: {0}", filePath));
 
                 //
                 // Check if we've seen this before
@@ -170,6 +171,7 @@ namespace srsvc
                         if (!foundExe.Trusted)
                         {
                             Log.Info("Deny it");
+                            SRSvc.appLog.WriteEntry(String.Format("Blocked! Blocked execution attempt by: {0}", filePath));
                             decision = Decision.DENY;
                         }
                         else
@@ -218,6 +220,7 @@ namespace srsvc
                     Sha1 = sha1Hash,
                     Sha256 = sha256Hash,
                 };
+
 
 
                 //

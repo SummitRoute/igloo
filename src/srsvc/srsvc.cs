@@ -42,6 +42,8 @@ namespace srsvc
             }
         }
 
+        public static System.Diagnostics.EventLog appLog;
+
         public static SystemConfig conf;
 
         public struct PROCESS_INFO
@@ -269,6 +271,10 @@ namespace srsvc
             try 
             {
                 conf = new SystemConfig();
+
+                appLog = new System.Diagnostics.EventLog();
+                appLog.Source = "Summit Route Igloo";
+
                 MessagingInterfaces.UIComm.Init(); // Init static class
                 AnalyzeRunningProcesses();
                 processMonitorCallback = new processMonitorCallbackDelegate(ProcessMonitorCallback);
