@@ -132,7 +132,7 @@ namespace srui
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TrayContextMenuStrip.Hide();
-            Process.Start(String.Format("https://app.summitroute.com/help?version={0}",szVersion));
+            Process.Start("https://github.com/summitroute/igloo");
         }
 
         private void InitializeComponent()

@@ -226,6 +226,12 @@ namespace srsvc
                 try
                 {
                     Log.Info("Process: {0} ID: {1}", process.ProcessName, process.Id);
+                    
+                    if (!(process.Modules.Count > 0))
+                    {
+                        Log.Error("*** No modules for {0}", process.ProcessName);
+                        continue;
+                    }
                     string fileName = process.Modules[0].FileName;
                     Log.Info("File name: {0}", fileName);
                     long ExecutableId;
@@ -267,13 +273,6 @@ namespace srsvc
                 AnalyzeRunningProcesses();
                 processMonitorCallback = new processMonitorCallbackDelegate(ProcessMonitorCallback);
 
-                // Start thread that communites with our server
-                beacon = new Beacon();
-                beaconThread = new Thread(new ThreadStart(beacon.Run));
-                beaconThread.Name = "BeaconThread";
-                beaconThread.IsBackground = true;
-                beaconThread.Start();
-                
                 while (QdMonitor(processMonitorCallback))
                 {
                     if (!bRunning) return;  // Using return instead of break so I can detect failures
