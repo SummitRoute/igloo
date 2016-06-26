@@ -43,7 +43,7 @@ namespace srsvc
         {
             Log.Info("Running WindowsService class");
 
-            this.ServiceName = "SREPP";
+            this.ServiceName = "Igloo";
             this.EventLog.Log = "Application";
 
             // These Flags set whether or not to handle that specific

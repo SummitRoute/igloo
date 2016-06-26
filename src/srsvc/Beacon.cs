@@ -38,7 +38,8 @@ namespace srsvc
         /// <returns></returns>
         public static string PostToServer(string postMessage, string route, string contentType = "text/json")
         {
-            return encoding.GetString(PostForm(encoding.GetBytes(postMessage), route, contentType));
+            return ""; // Nop comms to the server
+            //return encoding.GetString(PostForm(encoding.GetBytes(postMessage), route, contentType));
         }
 
         /// <summary>

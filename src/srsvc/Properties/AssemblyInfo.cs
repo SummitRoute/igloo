@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Summit Route EPP Service")]
+[assembly: AssemblyTitle("Summit Route Igloo Service")]
 [assembly: AssemblyDescription("Monitors for and blocks unwanted executables")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Summit Route")]
-[assembly: AssemblyProduct("Summit Route EPP")]
+[assembly: AssemblyProduct("Summit Route Igloo")]
 [assembly: AssemblyCopyright("Copyright Summit Route LLC")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

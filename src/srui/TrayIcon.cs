@@ -174,7 +174,7 @@ namespace srui
             this.MinimumSize = new System.Drawing.Size(formWidth, formHeight);
             this.MaximumSize = new System.Drawing.Size(formWidth, formHeight);
             this.Name = "TrayIcon";
-            this.Text = "Summit Route EPP v"+szVersion+" Settings";
+            this.Text = "Summit Route Igloo v"+szVersion+" Settings";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.ResumeLayout(false);
 
@@ -198,7 +198,7 @@ namespace srui
 
         public void DisplayNotification(string msg)
         {
-            this.TrayNotifyIcon.BalloonTipTitle = "Summit Route EPP";
+            this.TrayNotifyIcon.BalloonTipTitle = "Summit Route Igloo";
             this.TrayNotifyIcon.BalloonTipText = msg;
             this.TrayNotifyIcon.BalloonTipIcon = ToolTipIcon.Error;
             this.TrayNotifyIcon.Visible = true;

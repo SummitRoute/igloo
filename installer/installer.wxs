@@ -3,7 +3,7 @@
     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"
     xmlns:difx='http://schemas.microsoft.com/wix/DifxAppExtension'
     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Product Id="*" Name="Summit Route End-Point Protection"
+  <Product Id="*" Name="Summit Route Igloo"
            Language="1033"
            Version="0.0.0.1" 
            Manufacturer="Summit Route"
@@ -41,7 +41,7 @@
 
     <Property Id='INSTALLPATH'>
         <RegistrySearch Id='InstallPathProperty' Root="HKLM"
-            Key="Software\Summit Route\SREPP"
+            Key="Software\Summit Route\Igloo"
             Name='install_path' Type='raw' />
     </Property>
 
@@ -73,8 +73,8 @@
 
             <!-- Set up service for privileged monitoring -->
             <ServiceInstall Id="SummitRoute"
-                            Name="Summit Route EPP"
-                            DisplayName="Summit Route EPP"
+                            Name="Summit Route Igloo"
+                            DisplayName="Summit Route Igloo"
                             Type="ownProcess"
                             Start="auto"
                             ErrorControl="normal"
@@ -83,9 +83,9 @@
                             Interactive="no"
                             />
             <ServiceControl Id="StartSummitRoute"
-                            Name="Summit Route EPP" Start="install" Wait="no" />
+                            Name="Summit Route Igloo" Start="install" Wait="no" />
             <ServiceControl Id="StopSummitRoute" 
-                            Name="Summit Route EPP"
+                            Name="Summit Route Igloo"
                             Stop="both" Wait="yes" Remove="uninstall" />
 
             <util:RemoveFolderEx On="uninstall" Property="INSTALLPATH"/>
@@ -105,11 +105,11 @@
         <Component Id="RegistryEntries" Guid="0ff86769-fed7-49a7-ab70-5682d8ee03cd">
           <RegistryKey Root="HKLM"
               Key="Software\Microsoft\Windows\CurrentVersion\Run">
-            <RegistryValue Type="string" Name="SREPP" Value="&quot;[SRSERVICE]srui.exe&quot;" KeyPath="yes"/>
+            <RegistryValue Type="string" Name="Igloo" Value="&quot;[SRSERVICE]srui.exe&quot;" KeyPath="yes"/>
           </RegistryKey>
 
           <RegistryKey Id='SREPPRegKey' Root="HKLM"
-              Key="Software\Summit Route\SREPP"
+              Key="Software\Summit Route\Igloo"
               ForceDeleteOnUninstall="yes">
             <RegistryValue Type="string" Name="installer_path" Value="[MY_EXE_PATH]"/>
             <RegistryValue Type="string" Name="install_path" Value="[SRSERVICE]" />

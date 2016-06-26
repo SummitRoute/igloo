@@ -35,9 +35,9 @@ DWORD TcProcessMonitorCallback(PCOMM_CREATE_PROC pCreateProcStruct) {
 
 	// Decide
 	
-    /*
-    // Here's an example of denying calc
 	USHORT decision = CONTROLLER_RESPONSE_ALLOW;
+	/*
+	// Here's an example of denying calc
 	if (wcsstr(pCreateProcStruct->ImageFileNameBuf, L"calc") != 0) {
 		puts("Deny calc from running");
 		decision = CONTROLLER_RESPONSE_DENY;

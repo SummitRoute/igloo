@@ -1,6 +1,6 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
   <Bundle 
-    Name="Summit Route EPP" 
+    Name="Summit Route Igloo" 
     Version="0.0.0.1" 
     Manufacturer="Summit Route" 
     UpgradeCode="ffc97641-357e-412b-ada9-852a1772ac47" 
@@ -11,7 +11,7 @@
      
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
       <bal:WixStandardBootstrapperApplication
-            LicenseUrl="https://SummitRoute.com/srepp/license.html"
+            LicenseUrl=""
             LogoFile="../images/icon64.png"
             />
     </BootstrapperApplicationRef>

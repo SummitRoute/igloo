@@ -23,7 +23,7 @@ namespace srsvc
     /// </summary>
     public class SystemConfig
     {
-        private const string ConfigurationRegistryPath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Summit Route\\SREPP\\";
+        private const string ConfigurationRegistryPath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Summit Route\\Igloo\\";
 
         /// <summary>
         /// Agent version number
@@ -177,7 +177,7 @@ namespace srsvc
         /// </summary>
         private void setDefaults()
         {
-            Log.Info("SREPP being installed for the first time, fill in default values");
+            Log.Info("Igloo being installed for the first time, fill in default values");
 
             //
             // Get the groupUUID

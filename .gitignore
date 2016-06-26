@@ -19,3 +19,5 @@ docs/*
 /utils/sigcheck/sigcheck/bin/x86/Debug
 /utils/sigcheck/sigcheck/obj/x86/Debug
 /installer/*.exe
+/lib
+osslsigncode

@@ -222,7 +222,7 @@ del SummitRoute_x86.msi > NUL 2>&1
 del bootstrapper.wixobj > NUL 2>&1
 
 del srepp_installer.exe > NUL 2>&1
-move srepp_installer_signed.exe srepp_installer.exe >NUL
+move srepp_installer_signed.exe igloo_installer.exe >NUL
 
 del installer.wix* > NUL 2>&1
 echo *** SUCCESS: Installer created ***
