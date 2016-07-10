@@ -1,0 +1,11 @@
+- decision: Allow
+  signer: Microsoft
+  hash: abcd
+- decision: Allow
+  signer: Google
+  hash: aaaa
+  
+# Deny bad guys
+- decision: Deny
+  signer: Badguys
+  hash: deadbabe

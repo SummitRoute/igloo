@@ -52,6 +52,9 @@
     <Optimize>false</Optimize>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\..\lib\win32\yamldotnet.3.9.0\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\lib\win32\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -76,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Arbiter.cs" />
     <Compile Include="Beacon.cs" />
+    <Compile Include="RuleEngine.cs" />
     <Compile Include="Commands\GetCatalogByHash.cs" />
     <Compile Include="Commands\GetFileByHash.cs" />
     <Compile Include="Commands\NOP.cs" />

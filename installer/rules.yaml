@@ -1,0 +1,11 @@
+- decision: Allow
+  issuer: Microsoft
+  hash: abcd
+- decision: Allow
+  issuer: Google
+  hash: aaaa
+  
+# Deny bad guys
+- decision: Deny
+  issuer: Badguys
+  hash: deadbabe

@@ -61,8 +61,13 @@
             <File Id="srsvc" Name="srsvc.exe" Source="bins\srsvc.exe" KeyPath="yes" Vital="yes"/>
             <File Id="srui" Name="srui.exe" Source="bins\srui.exe" />
             <File Id="srkcomm" Name="srkcomm.dll" Source="bins\srkcomm.dll" />
+            
+            <!-- Rule files -->
+            <File Id="rules" Name="rules.yaml" Source="rules.yaml" />
+            <File Id="rulesExample" Name="rules.yaml.example" Source="rules.yaml.example" />
 
             <!-- Third-party libraries -->
+            <File Id="YamlDotNet" Name="YamlDotNet.dll" Source="bins\YamlDotNet.dll" />
             <File Id="FluentNHibernate" Name="FluentNHibernate.dll" Source="bins\FluentNHibernate.dll" />
             <File Id="IesiCollections" Name="Iesi.Collections.dll" Source="bins\Iesi.Collections.dll" />
             <File Id="NHibernate" Name="NHibernate.dll" Source="bins\NHibernate.dll" />

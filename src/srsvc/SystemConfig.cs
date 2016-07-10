@@ -114,8 +114,6 @@ namespace srsvc
             Log.Info("--- Configuration ---");
             Log.Info("  Group Guid: {0}", this.GroupUUID);
             Log.Info("  System Guid: {0}", this.SystemUUID);
-            Log.Info("  Beacon interval: {0} seconds", this.BeaconInterval);
-            Log.Info("  Beacon server: {0}", this.BeaconServer);
         }
 
         private string getConfigValue(string name, string defaultValue)
@@ -215,25 +213,6 @@ namespace srsvc
 #endif
 
             saveConfigToRegistry();
-
-
-            // Set some default rules
-            // TODO MUST Remove this rule
-            /*
-            var attrs = new List<RuleAttribute>();
-            attrs.Add(new RuleAttribute
-            {
-                AttributeType = "Issuer",
-                Attribute = "C=US, S=California, L=Mountain View, O=Google Inc, OU=Digital ID Class 3 - Java Object Signing, OU=Digital ID Class 3 - Java Object Signing, CN=Google Inc"
-            });
-
-            AddRuleToDB(new Rule
-            {
-                Allow = false,
-                Comment = "Block Google",
-                Attrs = attrs,
-            });
-             */
         }
 
         /// <summary>

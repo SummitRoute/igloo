@@ -87,6 +87,12 @@ echo *** Created catalog file
 REM ---------------------------------------------------------------------------
 REM Collect Third-Party libraries
 REM ---------------------------------------------------------------------------
+copy ..\lib\win32\yamldotnet.3.9.0\lib\net35\YamlDotNet.dll bins\. > NUL
+if %errorlevel% neq 0 (
+  echo "!!! ERROR Unable to copy YamlDotNet.dll"
+  exit /b %errorlevel%
+)
+
 copy ..\lib\win32\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll bins\. > NUL
 if %errorlevel% neq 0 (
   echo "!!! ERROR Unable to copy FluentNHibernate.dll"

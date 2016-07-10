@@ -265,6 +265,8 @@ namespace srsvc
             }
         }
 
+       
+
         public void Run()
         {
             Log.Info("Starting infinite loop");
@@ -272,8 +274,11 @@ namespace srsvc
             {
                 conf = new SystemConfig();
 
+                // Setup event log writer
                 appLog = new System.Diagnostics.EventLog();
                 appLog.Source = "Summit Route Igloo";
+
+                RuleEngine.LoadRules();
 
                 MessagingInterfaces.UIComm.Init(); // Init static class
                 AnalyzeRunningProcesses();

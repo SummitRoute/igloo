@@ -99,7 +99,7 @@ namespace srui
 
                     if (e is System.ServiceModel.EndpointNotFoundException)
                     {
-                        Log.Info("Problem connecting to server, will try again in 10 seconds");
+                        Log.Info("Problem connecting to service, will try again in 10 seconds");
                         System.Threading.Thread.Sleep(10000);  // Sleep 10s
                     }
                     else
