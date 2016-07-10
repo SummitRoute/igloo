@@ -43,7 +43,11 @@ namespace srsvc
 
         public static void Exception(Exception e, string format, params object[] args)
         {
-            LogMessage((int)Level.ERROR, String.Format("{0}: {1}", String.Format(format, args), e.ToString()), null);
+            var msg = format;
+            if (args != null) {
+                msg = String.Format(format, args);
+            }
+            LogMessage((int)Level.ERROR, String.Format("{0}: {1}", msg, e.ToString()), null);
         }
 
         public static void Critical(string format, params object[] args)
@@ -53,7 +57,12 @@ namespace srsvc
 
         private static void LogMessage(int level, string format, params object[] args)
         {
-            System.Diagnostics.Debug.WriteLine(String.Format("[{0} ({1})] {2}", LevelName[level], APP_NAME, String.Format(format, args)));
+            var msg = format;
+            if (args != null)
+            {
+                msg = String.Format(format, args);
+            }
+            System.Diagnostics.Debug.WriteLine(String.Format("[{0} ({1})] {2}", LevelName[level], APP_NAME, msg));
         }
     }
 }
