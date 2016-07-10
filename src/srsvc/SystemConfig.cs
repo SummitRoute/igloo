@@ -66,6 +66,20 @@ namespace srsvc
         }
 
         /// <summary>
+        /// Whether or not the system is in audit mode.
+        /// </summary>
+        private string _enforceMode;
+        public string EnforceMode
+        {
+            get { return _enforceMode; }
+            set
+            {
+                this._enforceMode = value;
+                setConfigValue("enforceMode", value);
+            }
+        }
+
+        /// <summary>
         /// Seconds between attempts to contact the server
         /// </summary>
         private int _beaconInterval;
@@ -141,6 +155,8 @@ namespace srsvc
 
             this._groupUUID = getConfigValue("groupUUID", "");
             this._systemUUID = getConfigValue("systemUUID", "");
+
+            this._enforceMode = getConfigValue("enforceMode", "false");
             
             string beaconIntervalStr = getConfigValue("beaconInterval", "60");
             this._beaconInterval = Convert.ToInt32(beaconIntervalStr);
@@ -155,6 +171,7 @@ namespace srsvc
             setConfigValue("version", this._version);
             setConfigValue("groupUUID", this._groupUUID);
             setConfigValue("systemUUID", this._systemUUID);
+            setConfigValue("enforceMode", this._enforceMode);
             setConfigValue("beaconInterval", this._beaconInterval.ToString());
             setConfigValue("beaconServer", this._beaconServer);
         }
@@ -201,6 +218,8 @@ namespace srsvc
             // Write extracted data to the registry
             this._groupUUID = installerConfig.groupUUID;
             this._systemUUID = ""; // Set the systemUUID to "" so we know we still need to register
+
+            this._enforceMode = "false";
 
             this._version = FileVersionInfo.GetVersionInfo(getCurrentFilePath()).FileVersion;
 

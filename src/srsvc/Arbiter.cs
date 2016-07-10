@@ -118,22 +118,22 @@ namespace srsvc
         private static Decision FinalDecisionBasedOnMode(Decision decision)
         {
             // TODO MUST set audit mode to false so we can be locked down
-            bool AuditMode = true;
+            bool EnforceMode = SRSvc.conf.EnforceMode == "true";
             if (decision == Decision.ALLOW)
             {
                 Log.Info("Decision: Allow process");
                 return decision;
             }
 
-            if (AuditMode)
-            {
-                Log.Info("Decision: Deny process (but allowing now due to audit mode)");
-                return Decision.ALLOW;
-            }
-            else
+            if (EnforceMode)
             {
                 Log.Info("Decision: Deny process");
                 return decision;
+            }
+            else
+            {
+                Log.Info("Decision: Deny process (but allowing now due to audit mode)");
+                return Decision.ALLOW;
             }
         }
 

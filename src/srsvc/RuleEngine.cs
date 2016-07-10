@@ -25,7 +25,7 @@ namespace srsvc
             const string RULES_FILE_NAME = "rules.yaml";
             Uri uri = new System.Uri(Assembly.GetExecutingAssembly().CodeBase);
             string RuleFile = Path.Combine(Path.GetDirectoryName(Uri.UnescapeDataString(uri.AbsolutePath)), RULES_FILE_NAME);
-            Log.Info(String.Format("Using rule file: {0}", RuleFile));
+            Log.Info(String.Format("Loading rule file: {0}", RuleFile));
 
             try
             {

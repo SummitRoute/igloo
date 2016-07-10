@@ -62,7 +62,7 @@
             <File Id="srui" Name="srui.exe" Source="bins\srui.exe" />
             <File Id="srkcomm" Name="srkcomm.dll" Source="bins\srkcomm.dll" />
             
-            <!-- Rule files -->
+            <!-- Config files -->
             <File Id="rules" Name="rules.yaml" Source="rules.yaml" />
             <File Id="rulesExample" Name="rules.yaml.example" Source="rules.yaml.example" />
 
