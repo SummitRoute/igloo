@@ -48,6 +48,11 @@ namespace srsvc
             DbFile = Path.Combine(Path.GetDirectoryName(Uri.UnescapeDataString(uri.AbsolutePath)), DB_FILE_NAME);
             Log.Info("Using DB file: {0}", DbFile);
 
+            // TODO For performance, you'll want to not delete this database file each time, but as this is being
+            // developed, it's just easier to continously start fresh.
+            Log.Info("Delete old database file");
+            File.Delete(DbFile);
+
             return Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard
                     .UsingFile(DbFile))
