@@ -5,7 +5,6 @@
   issuer: Google
   hash: aaaa
   
-# Deny bad guys
+# Deny evil calculator
 - decision: Deny
-  issuer: Badguys
-  hash: deadbabe
+  path: .*calc.*

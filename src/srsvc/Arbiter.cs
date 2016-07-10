@@ -40,7 +40,7 @@ namespace srsvc
 
         private static bool ExeMatchesAttribute(RuleAttribute attr, Executable exe)
         {
-            Log.Info("Checking with rule: {0},{1}", attr.AttributeType, attr.Attribute);
+            Log.Info("Checking with rule: {0}={1}", attr.AttributeType, attr.Attribute);
             if (attr.AttributeType == "path" && (new Regex(attr.Attribute)).Match(exe.Path).Success)
             {
                 return true;
@@ -119,12 +119,20 @@ namespace srsvc
         {
             // TODO MUST set audit mode to false so we can be locked down
             bool AuditMode = true;
+            if (decision == Decision.ALLOW)
+            {
+                Log.Info("Decision: Allow process");
+                return decision;
+            }
+
             if (AuditMode)
             {
+                Log.Info("Decision: Deny process (but allowing now due to audit mode)");
                 return Decision.ALLOW;
             }
             else
             {
+                Log.Info("Decision: Deny process");
                 return decision;
             }
         }
@@ -167,7 +175,7 @@ namespace srsvc
                         Executable foundExe = exes[0];
                         Log.Debug("Exe has been seen before");
                         ExecutableId = foundExe.Id;
-                        // TODO need to use a rule engine
+                        // TODO Make sure if rules are updated that we re-evaluate this
                         if (!foundExe.Trusted)
                         {
                             Log.Info("Deny it");

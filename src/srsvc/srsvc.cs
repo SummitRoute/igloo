@@ -248,6 +248,16 @@ namespace srsvc
                     Database.LogProcessEvent(processInfo, ExecutableId, Database.ProcessState.Exists);
 
                 } catch (Exception e) {
+                    // audiodg for some reason gives me an Access denied, so check for that first
+                    if (e.GetType().FullName == "System.ComponentModel.Win32Exception") {
+                        var ex = e as System.ComponentModel.Win32Exception;
+                        if (ex.ErrorCode == -2147467259)
+                        {
+                            Log.Error("Access denied");
+                            continue;
+                        }
+                    }
+
                     if (process.Id == 0 || process.Id == 4)
                     {
                         // "System" (4) and "idle" (0) processes cannot have their modules enumerated,

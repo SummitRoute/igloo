@@ -16,6 +16,7 @@ namespace srsvc
             public string Decision { get; set; }
             public string Issuer { get; set; }
             public string Hash { get; set; }
+            public string Path { get; set; }
         }
 
         public static void LoadRules()
@@ -50,15 +51,29 @@ namespace srsvc
                     }
 
                     var attrs = new List<RuleAttribute>();
-                    if (rule.Issuer != "") attrs.Add(new RuleAttribute{AttributeType = "Issuer", Attribute = rule.Issuer});
-                    if (rule.Hash != "") attrs.Add(new RuleAttribute{AttributeType = "Hash", Attribute = rule.Hash});
-
-                    if (rule.Issuer != "") { 
-                        attrs.Add(new RuleAttribute
+                    if (rule.Issuer != null) attrs.Add(new RuleAttribute{AttributeType = "Issuer", Attribute = rule.Issuer});
+                    if (rule.Hash != null)
+                    {
+                        switch (rule.Hash.Length)
                         {
-                            AttributeType = "Issuer",
-                            Attribute = rule.Issuer
-                        });
+                            case 32:
+                                attrs.Add(new RuleAttribute { AttributeType = "md5", Attribute = rule.Hash });
+                                break;
+                            case 40:
+                                attrs.Add(new RuleAttribute { AttributeType = "sha1", Attribute = rule.Hash });
+                                break;
+                            case 80:
+                                attrs.Add(new RuleAttribute { AttributeType = "sha256", Attribute = rule.Hash });
+                                break;
+                            default:
+                                Log.Error(String.Format("Unknown hash type {0}", rule.Hash));
+                                break;
+                        }
+                        
+                    }
+                    if (rule.Path != null)
+                    {
+                        attrs.Add(new RuleAttribute { AttributeType = "path", Attribute = rule.Path });
                     }
 
                     Database.AddRuleToDB(new srsvc.Rule
