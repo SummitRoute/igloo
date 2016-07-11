@@ -117,7 +117,6 @@ namespace srsvc
 
         private static Decision FinalDecisionBasedOnMode(Decision decision)
         {
-            // TODO MUST set audit mode to false so we can be locked down
             bool EnforceMode = SRSvc.conf.EnforceMode == "true";
             if (decision == Decision.ALLOW)
             {
@@ -186,7 +185,8 @@ namespace srsvc
                         {
                             Log.Info("Allow it");
                         }
-                        return decision;
+
+                        return FinalDecisionBasedOnMode(decision);
                     }
                 }
 
@@ -228,7 +228,6 @@ namespace srsvc
                     Sha1 = sha1Hash,
                     Sha256 = sha256Hash,
                 };
-
 
 
                 //
