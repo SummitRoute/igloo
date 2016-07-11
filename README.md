@@ -17,7 +17,7 @@ Setup
 - Install [WiX 3.8](https://wix.codeplex.com/releases/view/115492)
 - Git clone this project somewhere.
 - Download [srepp_lib.zip](https://summitroute.com/downloads/srepp_lib.zip) and add it's contents to the `./lib`.  These are binaries needed to avoid errors about "Foundation" (and other libraries) not found.
-- Download [osslsigncode.zip](http://192.168.106.129:8000/downloads/osslsigncode.zip) and add it's contents to  `./installer/osslsigncode`. These are needed for when you run the create_installer.exe script to sign the installer.
+- Download [osslsigncode.zip](https://summitroute.com/downloads/osslsigncode.zip) and add it's contents to  `./installer/osslsigncode`. These are needed for when you run the create_installer.bat script to sign the installer.
 
 Compile
 -------
@@ -29,7 +29,12 @@ Compile
 
 Testing
 -------
-You have to install the SR_Test.cer certificate on the test system. This can only be done in the following way (do not just double-click on the cert to try to install it):
+You likely don't have a real Windows kernel code signing cert. An EV Code Signing Certificate with Hardware Token that is valid for 3 years can be obtained from Digicert for about $500. Even if you have a real cert, you shouldn't connect it to your development system if your development system has Internet access. So you'll want to use a test cert.  You can generate one or use the SR_Test.cer that I've included in the repo at ./installer/SR_test.cr  
+
+# Install the test certificate
+You have to install the SR_Test.cer certificate on the test system. The way in which I do this is sloppy, so you'll want to do this in a VM.
+
+This can only be done in the following way (do not just double-click on the cert to try to install it):
 - Run mmc.exe as Administrator
 - Click File -> "Add Remove Snap-in".  Select "Certificates" and click "Add".  Choose "Computer account" from the options. Click "Finish".
 - Browse to "Console Root" -> "Certificates (Local Computer)" -> "Trusted Root Certification Authorities" -> "Certificates".
