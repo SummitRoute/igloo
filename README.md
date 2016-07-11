@@ -31,7 +31,7 @@ Testing
 -------
 You likely don't have a real Windows kernel code signing cert. An EV Code Signing Certificate with Hardware Token that is valid for 3 years can be obtained from Digicert for about $500. Even if you have a real cert, you shouldn't connect it to your development system if your development system has Internet access. So you'll want to use a test cert.  You can generate one or use the SR_Test.cer that I've included in the repo at ./installer/SR_test.cr  
 
-# Install the test certificate
+### Install the test certificate
 You have to install the SR_Test.cer certificate on the test system. The way in which I do this is sloppy, so you'll want to do this in a VM.
 
 This can only be done in the following way (do not just double-click on the cert to try to install it):
