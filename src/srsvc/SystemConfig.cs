@@ -194,42 +194,16 @@ namespace srsvc
         {
             Log.Info("Igloo being installed for the first time, fill in default values");
 
-            //
-            // Get the groupUUID
-            //
-            string msiPath = (string)Registry.GetValue(ConfigurationRegistryPath, "installer_path", "");
-            if (msiPath == "" || !File.Exists(msiPath))
-            {
-                Log.Info("Fresh install but no msi can be found... this is bad");
-                throw new Exception("Unable to find installer");
-            }
-            byte[] configBytes = GetConfigurationFromMsi(msiPath);
-            if (configBytes == null) {
-                throw new Exception("Unable to extract config from MSI");
-            }
-            InstallerConfig installerConfig = ParseConfig(configBytes);
-            // Sanity check
-            if (installerConfig.groupUUID == "00000000-0000-0000-0000-000000000000")
-            {
-                throw new Exception("GroupUUID is null");
-            }
-
-
             // Write extracted data to the registry
-            this._groupUUID = installerConfig.groupUUID;
+            this._groupUUID = "00000000-0000-0000-0000-000000000000";
             this._systemUUID = ""; // Set the systemUUID to "" so we know we still need to register
 
             this._enforceMode = "false";
 
             this._version = FileVersionInfo.GetVersionInfo(getCurrentFilePath()).FileVersion;
 
-#if DEBUG
             this._beaconInterval = 5; // 5 seconds
-            this._beaconServer = "http://192.168.106.129:8080";
-#else
-            this._beaconInterval = 5*60; // 5 minutes
-            this._beaconServer = "https://beacon.summitroute.com";
-#endif
+            this._beaconServer = "";
 
             saveConfigToRegistry();
         }
